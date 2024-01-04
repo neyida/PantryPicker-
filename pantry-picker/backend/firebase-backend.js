@@ -29,10 +29,10 @@ const db = getFirestore(firebaseApp)
 // Endpoint to store user input in Firebase
 app.post('/storeUserInputs', async (req, res) => {
   try {
-    const formData = req.body.formData;
+    const response = req.body.response;
     // Store userInput in Firestore
-    const docRef = await addDoc(collection(db, 'users', clientIp, 'studentInfo'), {
-      formData: formData
+    const docRef = await addDoc(collection(db, 'query'), {
+      response: response
     });
     console.log('Document written with ID: ', docRef.id);
     res.status(200).json(`User input stored successfully with ID: ${docRef.id}`);
@@ -40,11 +40,12 @@ app.post('/storeUserInputs', async (req, res) => {
     res.status(500).json({ error: 'Error storing user input: ' + error });
   }
 });
+
+const PORT = process.env.PORT || 3000;
+
 app.get('/config', (req, res) => {
     res.json({ port: process.env.PORT || 3000 });
   });
-
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -5,16 +5,10 @@ const apiKey='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'
 const openai = new OpenAI({
     apiKey: apiKey,
     dangerouslyAllowBrowser: true,
-  });
+});
 
-const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions';
 
-/*async function main() {
-    const completion = await openai.chat.completions.create({
-      messages: [{ role: "system", content: "You are a helpful assistant." }],
-      model: "gpt-3.5-turbo",
-    });
-}*/
+
 async function getLocation() {
     const response = await fetch("https://ipapi.co/json/");
     const locationData = await response.json();
@@ -114,7 +108,9 @@ async function getLocation() {
     }
     return "The maximum number of iterations has been met without a suitable answer. Please try again with a more specific input.";
   }
-   
+  async function getIngredients(){
+    const ingredients = await fetch()
+  }
   const response = await agent(
     "Please suggest some recipes containing garlic and tomato sauce based on my location and the weather."
   );
@@ -132,3 +128,4 @@ async function getLocation() {
       body: JSON.stringify({ response: response }),
     })
   });
+  
