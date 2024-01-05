@@ -39,6 +39,9 @@ const db = getFirestore(firebaseApp)
   });
   // ==================== GPT-3 ====================
   const PORT = process.env.PORT || 3000;
+  app.get('/config', (req, res) => {
+    res.json({ port: process.env.PORT || 3000 });
+});
   app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`);
   });
