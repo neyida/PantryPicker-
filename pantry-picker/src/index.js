@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
 import App from './LandingPage.js';
 import reportWebVitals from './reportWebVitals.js';
 import { BrowserRouter as Router } from 'react-router-dom';
-import NavigationPage from './componets/NavPage.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

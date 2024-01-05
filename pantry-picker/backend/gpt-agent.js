@@ -1,9 +1,10 @@
-import OpenAI from "openai";
-
-const apiKey='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'
+const OpenAI = require("openai");
+const express = require('express');
+const app = express();
+const key = require('./config.js').gptConfig.apiKey;
 
 const openai = new OpenAI({
-    apiKey: apiKey,
+    apiKey: key,
     dangerouslyAllowBrowser: true,
 });
 
@@ -91,7 +92,7 @@ async function getLocation() {
           null,
           functionArgsArr
         );
-   
+        console.log("functionResponse:", functionResponse);
         messages.push({
           role: "function",
           name: functionName,
@@ -108,24 +109,8 @@ async function getLocation() {
     }
     return "The maximum number of iterations has been met without a suitable answer. Please try again with a more specific input.";
   }
-  async function getIngredients(){
-    const ingredients = await fetch()
-  }
-  const response = await agent(
-    "Please suggest some recipes containing garlic and tomato sauce based on my location and the weather."
-  );
 
-  console.log("response:", response);
-
-  fetch('http://localhost:3000/config')
-  .then(response => response.json())
-  .then(config => {
-    fetch(`http://localhost:${config.port}/storeUserInputs`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ response: response }),
-    })
-  });
   
+
+
+module.exports = agent;
