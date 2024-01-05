@@ -32,7 +32,7 @@ test('renders landing page with logo, app name, description, and buttons', () =>
 test('buttons trigger expected actions', () => {
   render(<LandingPage />);
 
-  // Mock functions for button actions (you can replace these with your actual functions)
+  // Mock functions for button actions
   const signUpMock = jest.fn();
   const loginMock = jest.fn();
   const continueAsGuestMock = jest.fn();
