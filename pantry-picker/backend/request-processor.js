@@ -20,8 +20,9 @@ const db = getFirestore(firebaseApp)
 // grabbing ingredients from user input and passing them as prompts to gpt
   app.post('/ingredients', async (req, res) => {
     const ingredients = req.body.ingredients;
+  // ==================== GPT-3 ====================
     const response = await request.agent(
-      `Please suggest some recipes containing ${ingredients.join(" and ")} based on my location and the weather.`
+      `Please suggest five recipes containing ${ingredients.join(" and ")} based on my location and the weather including ingredients and quantities.`
     );
     console.log("response:", response);
       // Endpoint to store user input in Firebase
@@ -37,7 +38,10 @@ const db = getFirestore(firebaseApp)
     }
 
   });
-  // ==================== GPT-3 ====================
+
+
+
+
   const PORT = process.env.PORT || 3000;
   app.get('/config', (req, res) => {
     res.json({ port: process.env.PORT || 3000 });

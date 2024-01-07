@@ -3,14 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './LandingPage.js';
 import reportWebVitals from './reportWebVitals.js';
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import page components
+import NavPage from './components/NavPage.js';
+import SignUpForm from './components/SignUpForm.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Routes>
+        <Route path="/nav" element={<NavPage />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/" element={<App />} />
+      </Routes>
     </Router>
   </React.StrictMode>,
 );
