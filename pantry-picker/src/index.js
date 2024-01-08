@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import page components
 import NavPage from './components/NavPage.js';
 import SignUpForm from './components/SignUpForm.js';
+import SearchPage from './components/SearchPage.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Route path="/nav" element={<NavPage />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/" element={<App />} />
+        <Route path="/serchup" element={<SearchPage/>} />
       </Routes>
     </Router>
   </React.StrictMode>,

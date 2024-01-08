@@ -1,15 +1,11 @@
 import React from 'react';
 import './LandingPage.css';
 import Logo from './logoPP.png';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 
 
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-  const useHandleClick = (path) => {
-    navigate(path);
-  }
   return (
     <div className="landing-page">
       <div className="header">
