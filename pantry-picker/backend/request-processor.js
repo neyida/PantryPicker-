@@ -19,6 +19,11 @@ const db = getFirestore(firebaseApp)
 
 // grabbing ingredients from user input and passing them as prompts to gpt
   app.post('/ingredients', async (req, res) => {
+     /* check to see if the request is already in the database
+
+
+
+    */
     const ingredients = req.body.ingredients;
   // ==================== GPT-3 ====================
     const response = await request.agent(
@@ -26,6 +31,10 @@ const db = getFirestore(firebaseApp)
     );
     console.log("response:", response);
       // Endpoint to store user input in Firebase
+    /* send the info back to the client
+
+
+    */
     try {
       // Store userInput in Firestore
       const docRef = await addDoc(collection(db, 'query'), {
@@ -39,12 +48,26 @@ const db = getFirestore(firebaseApp)
 
   });
 
+  app.post('/createUser', async (req, res) => {
+    const userInfo = req.userInfo
+    try{
+      const documentReference = await addDoc(collection(db, 'user', userInfo.name),{
+          userInfo: userInfo
+      })
+      console.log('Document written with ID: ', documentReference.id);
+      res.status(200).json(`User input stored successfully with ID: ${documentReference.id}`);
+      }
+      catch(error){
+        res.status(500).json({error: 'Error storing user input: ' + error})
+      }
+    });
 
 
 
-  const PORT = process.env.PORT || 3000;
+
+  const PORT = process.env.PORT || 3001;
   app.get('/config', (req, res) => {
-    res.json({ port: process.env.PORT || 3000 });
+    res.json({ port: process.env.PORT || 3001 });
 });
   app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`);

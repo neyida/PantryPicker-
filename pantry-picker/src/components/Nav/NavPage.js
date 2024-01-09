@@ -2,9 +2,9 @@
 import React from "react";
 import "./NavPage.css";
 import Logo from '../logoPP.png';
-import Pantry from './pantryicon.png';
-import Recipes from './recipesicon.png';
-import Serch from './serchicon.png';
+import Pantry from './NavIcons/pantryicon.png';
+import Recipes from './NavIcons/recipesicon.png';
+import Serch from './NavIcons/serchicon.png';
 
 const NavPage = () => {
 

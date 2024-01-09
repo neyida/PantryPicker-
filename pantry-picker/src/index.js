@@ -5,8 +5,10 @@ import App from './LandingPage.js';
 import reportWebVitals from './reportWebVitals.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import page components
-import NavPage from './components/NavPage.js';
-import SignUpForm from './components/SignUpForm.js';
+import NavPage from './components/Nav/NavPage.js';
+import PantryPage from './components/PantryPage.js';
+import SignUpForm from './components/SignUp/SignUpForm.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +18,7 @@ root.render(
         <Route path="/nav" element={<NavPage />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/" element={<App />} />
+        <Route path="/pantry" element={<PantryPage />} />
       </Routes>
     </Router>
   </React.StrictMode>,

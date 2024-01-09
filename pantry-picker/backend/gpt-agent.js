@@ -1,6 +1,4 @@
 const OpenAI = require("openai");
-const express = require('express');
-const app = express();
 const key = require('./config.js').gptConfig.apiKey;
 
 const openai = new OpenAI({
