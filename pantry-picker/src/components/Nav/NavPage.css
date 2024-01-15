@@ -1,42 +1,68 @@
 .navigation-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100vh;
-  }
-  
-  .top-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .logo {
-    max-width: 200px; 
-  }
-  
-  .description {
-    margin-top: 10px;
-    color: #8D8741; 
-  }
-  
-  .bottom-section {
-    display: flex;
-    justify-content: space-between;
-    width: 300px; 
-    margin-bottom: 20px;
-  }
-  
-  .bottom-section .icon {
-    cursor: pointer;
-  }
- 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 200px;
+}
+
+.description {
+  margin-top: 10px;
+  color: #8D8741;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: center; /* Center the icons horizontally */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Tooltip for hover effect */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #8D8741;
+  color: #FBEEC1;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the icon */
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+

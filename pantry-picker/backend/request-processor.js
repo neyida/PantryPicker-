@@ -22,9 +22,6 @@ const db = getFirestore(firebaseApp)
 // grabbing ingredients from user input and passing them as prompts to gpt
   app.post('/ingredients', async (req, res) => {
      /* check to see if the request is already in the database
-
-
-
     */
     const ingredients = req.body.ingredients;
   // ==================== GPT-3 ====================
@@ -53,9 +50,9 @@ const db = getFirestore(firebaseApp)
 
 // Endpoint to store user creation data in Firebase
   app.post('/createUser', async (req, res) => {
-    const userInfo = req.body;
+    const userInfo = req.body.userInfo;
     console.log(userInfo)
-    /*try{
+    try{
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, userInfo.userEmail, userInfo.userPassword)
         .then(console.log('User created successfully'))
@@ -69,19 +66,13 @@ const db = getFirestore(firebaseApp)
           const errorMessage = error.message;
           // ..
         });
-  
-      const documentReference = await addDoc(collection(db, 'user', userInfo.name),{
-          userInfo: userInfo
-      })
-      console.log('Document written with ID: ', documentReference.id);
-      res.status(200).json(`User input stored successfully with ID: ${documentReference.id}`);
       }
-      catch(error){
-        res.status(500).json({error: 'Error storing user input: ' + error})
-      }
-    */});
+    catch (error){
+      res.status(500).json({ error: 'Error storing user input: ' + error });
+    }
+  });
 // Endpoint to process signin info in Firebase
-/* app.post("/signin", async (req, res) => {
+ app.post("/signin", async (req, res) => {
     req.body
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
@@ -94,7 +85,7 @@ const db = getFirestore(firebaseApp)
         const errorCode = error.code;
         const errorMessage = error.message;
       });
-  }); */
+  }); 
 
 
     // Server listening to a given port to process requests

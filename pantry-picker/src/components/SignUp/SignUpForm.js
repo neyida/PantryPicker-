@@ -7,8 +7,8 @@ import Logo from '../../logoPP.png';
 const SignUpForm = () => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-
-  const [email, setEmail] = useState("email@gmail.com");
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const createUser =  (name, email, password) => {
@@ -21,7 +21,7 @@ const SignUpForm = () => {
       userPassword: password
     }
     
-    fetch('http://localhost:3001/createUser',{
+    fetch('http://localhost:3002/createUser',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const SignUpForm = () => {
               type="text"
               placeholder="First Name"
               value={firstname}
-              onChange={(event) => console.log(setFirstName(event.target.value))}
+              onChange={(event) => setFirstName(event.target.value)}
             />
           </div>
           <div>
@@ -75,17 +75,28 @@ const SignUpForm = () => {
           </div>
           <div className="inputDiv">
             <input
-              type="password"
+              type= {showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
+            <label for="check">Show Password</label>
+                <input
+                    id="check"
+                    type="checkbox"
+                    value={showPassword}
+                    onChange={() =>
+                        setShowPassword((prev) => !prev)
+                    }
+                />
           </div>
         </div>
         {/* needs to redirect to an email confirmation page */}
-        {/*<Link to = {"/"}*/}
-          <button type="submit">Sign Up</button>
-        {/*</Link>*/}
+        <Link to = {"/"}>
+          <button type="submit">
+              Sign Up
+            </button>
+        </Link>
       </form>
       <div className="footer">
         <p>Already have an account?</p>

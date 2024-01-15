@@ -19,6 +19,7 @@ root.render(
           <Route path="/nav" element={<NavPage />} />
             <Route path="/pantry" element={<PantryPage />} />
             <Route path="/searchup" element={<SearchPage/>} />
+            {/*<Route path="/login" element={<LoginPage/>} />*/}
           <Route path="/signup" element={<SignUpForm />} />
       </Routes>
     </Router>
