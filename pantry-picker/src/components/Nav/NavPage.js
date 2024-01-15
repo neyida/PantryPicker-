@@ -1,10 +1,10 @@
 // NavigationPage.js
 import React from "react";
 import "./NavPage.css";
-import Logo from '../logoPP.png';
+import Logo from '../../logoPP.png';
 import Pantry from './NavIcons/pantryicon.png';
 import Recipes from './NavIcons/recipesicon.png';
-import Serch from './NavIcons/serchicon.png';
+import Search from './NavIcons/searchicon.png';
 
 const NavPage = () => {
 
@@ -22,7 +22,7 @@ const NavPage = () => {
         {/* Triangle of clickable icons at the bottom */}
           <img src={Recipes} alt="Icon 1" />
           <img src={Pantry} alt="Icon 2" />
-          <img src={Serch} alt="Icon 3" />
+          <img src={Search} alt="Icon 3" />
         </div>
       </div>
   );

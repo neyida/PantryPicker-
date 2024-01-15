@@ -49,8 +49,6 @@ div#name div {
 
 }
 
-
-
 div#userInfo{
  min-width: 56vh
 }
@@ -73,4 +71,25 @@ form div{
 
 div#userInfo div input {
   width: 54vh
+}
+.footer{
+  text-align: center;
+  padding: 20px; 
+  margin-top: 10%; 
+}
+
+.footer p {
+  color: #9f8057;
+  font-size: 1rem;
+}
+
+.footer a {
+  color: #659DBD;
+  text-decoration: none;
+  font-weight: bold; 
+  margin-left: 5px; 
+}
+
+.footer a:hover {
+  color: #DAAD86;
 }

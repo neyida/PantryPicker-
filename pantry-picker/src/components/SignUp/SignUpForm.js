@@ -8,32 +8,34 @@ const SignUpForm = () => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("email@gmail.com");
   const [password, setPassword] = useState("");
 
-  const createUser = async (name, email, password) => {
+  const createUser =  (name, email, password) => {
     // Implementation of createUser function
     // ...
+    console.log(name, email, password);
     const userInfo = {
       userName: name,
       userEmail: email,
       userPassword: password
     }
-    fetch('http://localhost:3000/',{
+    
+    fetch('http://localhost:3001/createUser',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      userInfo : JSON.stringify(userInfo)
+      body : JSON.stringify({userInfo: userInfo})
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await createUser(firstname,lastname, email, password);
+    createUser(firstname + " " + lastname, email, password);
   };
 
   return (
@@ -50,7 +52,7 @@ const SignUpForm = () => {
               type="text"
               placeholder="First Name"
               value={firstname}
-              onChange={(event) => setFirstName(event.target.value)}
+              onChange={(event) => console.log(setFirstName(event.target.value))}
             />
           </div>
           <div>
@@ -81,9 +83,9 @@ const SignUpForm = () => {
           </div>
         </div>
         {/* needs to redirect to an email confirmation page */}
-        <Link to = {"/"}>
+        {/*<Link to = {"/"}*/}
           <button type="submit">Sign Up</button>
-        </Link>
+        {/*</Link>*/}
       </form>
       <div className="footer">
         <p>Already have an account?</p>

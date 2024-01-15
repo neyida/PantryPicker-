@@ -1,7 +1,8 @@
 //importing all required modules
-const bodyParser = require('body-parser');
 const { initializeApp } = require('firebase/app');
 const { getFirestore, collection, addDoc } = require('firebase/firestore');
+const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require("firebase/auth");
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 // grabbing gpt function and firebase config
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 //initializing firebase db
 const firebaseApp = initializeApp(config);
 const db = getFirestore(firebaseApp)
+
 
 
 
@@ -48,9 +50,26 @@ const db = getFirestore(firebaseApp)
 
   });
 
+
+// Endpoint to store user creation data in Firebase
   app.post('/createUser', async (req, res) => {
-    const userInfo = req.userInfo
-    try{
+    const userInfo = req.body;
+    console.log(userInfo)
+    /*try{
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, userInfo.userEmail, userInfo.userPassword)
+        .then(console.log('User created successfully'))
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
+  
       const documentReference = await addDoc(collection(db, 'user', userInfo.name),{
           userInfo: userInfo
       })
@@ -60,14 +79,28 @@ const db = getFirestore(firebaseApp)
       catch(error){
         res.status(500).json({error: 'Error storing user input: ' + error})
       }
-    });
+    */});
+// Endpoint to process signin info in Firebase
+/* app.post("/signin", async (req, res) => {
+    req.body
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }); */
 
 
-
-
-  const PORT = process.env.PORT || 3001;
+    // Server listening to a given port to process requests
+  const PORT = process.env.PORT || 3002;
   app.get('/config', (req, res) => {
-    res.json({ port: process.env.PORT || 3001 });
+    res.json({ port: PORT });
 });
   app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`);
